@@ -1,0 +1,25 @@
+{
+    "name": "supt/starterpack-forms",
+    "description": "Starterpack's Form Custom Post Type.",
+    "version": "1.0.0",
+    "type": "wordpress-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "superhuit",
+            "email": "tech@superhuit.ch",
+            "homepage": "https://www.superhuit.ch/en"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "composer/installers": "^1.9",
+        "symfony/mime": "^5.3",
+        "symfony/validator": "^5.3"
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true
+        }
+    }
+}

@@ -1,0 +1,82 @@
+body.wp-admin.form_page_form_sent #wpbody {
+	position: relative;
+	height: calc(100vh - (32px + 65px)); /* 100vh - (Admin bar + bottom margin) */
+}
+body.wp-admin.form_page_form_sent #wpbody-content {
+	float: none;
+	overflow: hidden !important;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	margin-bottom: 65px;
+	padding-bottom: 0;
+}
+
+.form-submissions-list .button.button-export {
+	padding: 0 30px;
+}
+
+.form-submissions-list .button.button-delete {
+	color: #dc3232;
+	border-color: #dc3232;
+}
+.form-submissions-list .button.button-delete:hover,
+.form-submissions-list .button.button-delete:focus {
+	color: #a21f1f;
+	border-color: #a21f1f;
+}
+
+.form-submissions-list {
+	overflow: hidden;
+}
+.form-submissions-list .manage-column {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-weight: bold;
+}
+.form-submissions-list .table-wrapper {
+	max-width: 100%;
+	height: calc(100% - 175px); /* don't understand from where come this -175px, but without it doesn't work */
+	overflow: auto;
+}
+.form-submissions-list .table-wrapper table {
+	width: auto;
+	min-width: 100%;
+	border-left: 0;
+}
+.form-submissions-list .table-wrapper table thead {
+	position: sticky;
+	top: 0;
+	z-index: 10;
+	background-color: white;
+}
+.form-submissions-list .table-wrapper table tbody {
+	position: relative;
+	z-index: 0;
+}
+.form-submissions-list .wp-list-table .column-date {
+	width: 160px;
+	position: sticky;
+	left: 0px;
+	border-right: 1px solid #ccd0d4;
+	border-left: 1px solid #ccd0d4;
+	background-color: white;
+}
+.form-submissions-list .wp-list-table.striped > tbody > :nth-child(2n+1) .column-date {
+	background-color: #f9f9f9;
+}
+.wp-list-table .column-type-file ul {
+	padding: 0;
+	margin: 0;
+	list-style-type: disc;
+}
+.wp-list-table .column-type-file li {
+	margin: 0;
+}
+.wp-list-table .column-type-file a {
+	display: block;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}

@@ -1,0 +1,15 @@
+/**
+ * Admin columns
+ */
+.post-type-form .manage-column.column-title,
+.post-type-form .manage-column.column-notification {
+	width: 300px;
+}
+
+.post-type-form .manage-column.column-submissions {
+	width: 100px;
+}
+
+.post-type-form .column-fields strong {
+	color: #000;
+}

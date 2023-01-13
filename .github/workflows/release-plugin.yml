@@ -1,0 +1,42 @@
+---
+name: 'Release Starterpack-forms plugin'
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+env:
+  PLUGIN_NAME: starterpack-forms
+
+jobs:
+  release:
+    name: "Release"
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: ./.github/actions/build
+
+      - name: Generate plugin folder
+        uses: up9cloud/action-rsync@master
+        env:
+          MODE: local
+          SOURCE: .
+          TARGET: ${{ env.PLUGIN_NAME }}
+          ARGS: -r --exclude=.editorconfig --exclude=.git --exclude=.github --exclude=.gitignore --exclude=composer.json --exclude=composer.lock --exclude=README.md
+
+      - name: Generate zip file
+        uses: montudor/action-zip@v1
+        with:
+          args: zip -qq -r ${{ env.PLUGIN_NAME }}.zip ${{ env.PLUGIN_NAME }}
+
+      - name: Create release
+        uses: 'marvinpinto/action-automatic-releases@latest'
+        with:
+          repo_token: '${{ secrets.GITHUB_TOKEN }}'
+          prerelease: false
+          files: |
+            ${{ env.PLUGIN_NAME }}.zip

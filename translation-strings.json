@@ -1,0 +1,32 @@
+{
+	"form-error-message": {
+		"message": "There was an error and your message probably didn't get to us, sorry. Please try later or contact us directly by e-mail"
+	},
+	"form-status-success": {
+		"message": "Sent"
+	},
+	"form-status-pending": {
+		"message": "Sending…"
+	},
+	"form-input-optional": {
+		"message": "optional"
+	},
+	"form-input-error-empty": {
+		"message": "Please fill out this field."
+	},
+	"form-input-error-email": {
+		"message": "Please enter a valid email address."
+	},
+	"form-error-empty": {
+		"message": "Please fill out the form entirely to be able to send it."
+	},
+	"form-submit-label": {
+		"message": "Submit"
+	},
+	"form-input-error-filesize": {
+		"message": "Your file size is larger than %dMB."
+	},
+	"form-input-error-accept": {
+		"message": "Your file is invalid. Allowed files are %s."
+	}
+}

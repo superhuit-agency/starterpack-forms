@@ -1,0 +1,36 @@
+/**
+ * ACF WYSIWYG placeholder
+ */
+ .acf-field-wysiwyg .acf-wysiwyg-placeholder {
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: none;
+	width: calc(100% - 26px);
+	height: calc(100% - 51px);
+	padding: 20px;
+	margin: 50px 13px 1px;
+	pointer-events: none;
+	font-style: italic;
+	overflow: hidden;
+	background-color: white;
+	box-sizing: border-box;
+}
+.acf-field-wysiwyg .tmce-active + .acf-wysiwyg-placeholder {
+	margin-top: 75px;
+	height: calc(100% - 76px);
+}
+.acf-field-wysiwyg .acf-editor-wrap.delay + .acf-wysiwyg-placeholder {
+	display: block;
+}
+.acf-field-wysiwyg .acf-wysiwyg-placeholder > * {
+	opacity: .6;
+}
+#poststuff .acf-field-wysiwyg .acf-wysiwyg-placeholder h1 {
+	font-size: 18px;
+	margin: 1em 0;
+	padding: 0;
+}
+#poststuff .acf-field-wysiwyg .acf-wysiwyg-placeholder p {
+	margin: 1em 0;
+}

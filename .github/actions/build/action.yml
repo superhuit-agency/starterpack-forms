@@ -1,0 +1,24 @@
+name: 'Build Starterpack-forms plugin'
+runs:
+  using: 'composite'      
+  steps:
+    - name: PHP setup
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '7.4'
+        coverage: none
+      env:
+        COMPOSER_TOKEN: ${{ github.token }}
+
+    - name: Cache Composer packages
+      id: composer-cache
+      uses: actions/cache@v3
+      with:
+        path: vendor
+        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-php-
+
+    - name: Install composer dependencies
+      shell: bash
+      run: composer install --no-dev --prefer-dist --no-progress
