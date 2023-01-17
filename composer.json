@@ -1,7 +1,7 @@
 {
     "name": "supt/starterpack-forms",
     "description": "Starterpack's Form Custom Post Type.",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "type": "wordpress-plugin",
     "license": "MIT",
     "authors": [
