@@ -123,8 +123,8 @@ function register() {
 function enqueue_admin_assets() {
 	if ( get_post_type() !== NAME ) return;
 
-	wp_enqueue_style( 'form-edit-table', SPCKFORMS_URI . 'assets/form-edit-table.css', false, THEME_VERSION );
-	wp_enqueue_style( 'admin-wysiwyg-placeholder', SPCKFORMS_URI . 'assets/admin-wysiwyg-placeholder.css', false, THEME_VERSION );
+	wp_enqueue_style( 'form-edit-table', SPCKFORMS_URI . 'assets/form-edit-table.css', false, SPCKFORMS_PLUGIN_VERSION );
+	wp_enqueue_style( 'admin-wysiwyg-placeholder', SPCKFORMS_URI . 'assets/admin-wysiwyg-placeholder.css', false, SPCKFORMS_PLUGIN_VERSION );
 }
 
 function allowed_block_types( $allowed_block_types, $block_editor_context ) {
