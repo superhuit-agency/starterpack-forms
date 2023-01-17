@@ -16,15 +16,17 @@ const META_KEY_FIELDS_NAME = 'form_fields';
 
 // Allowed block in the block editor
 const ALLOWED_BLOCKS = [
-	'supt/input-text',
+	'supt/checkbox',
+	'supt/form-section-breaker',
+	'supt/input-checkbox',
 	'supt/input-email',
 	'supt/input-file',
-	'supt/input-select',
-	'supt/input-textarea',
-	'supt/input-yesno',
-	'supt/input-checkbox',
 	'supt/input-option-radio',
-	'supt/form-section-breaker',
+	'supt/input-radio',
+	'supt/input-select',
+	'supt/input-text',
+	'supt/input-textarea',
+	'supt/radio',
 ];
 
 /**
@@ -172,6 +174,7 @@ function save_fields_config( $post ) {
 			$carry[] = [
 				'block' => $block['blockName'],
 				'attributes' => $attributes,
+				'children'	 => $block['innerBlocks'],
 			];
 		}
 
