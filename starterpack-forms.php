@@ -62,7 +62,9 @@ register_deactivation_hook( __FILE__, 'spckforms_deactivate' );
 register_uninstall_hook(__FILE__, 'spckforms_uninstall');
 
 // Load translation texts
-add_action( 'after_setup_theme', 'load_textdomain' );
+add_action( 'after_setup_theme', function() {
+	load_theme_textdomain( 'spckforms', SPCKFORMS_PATH . '/languages' );
+});
 
 /**
  * Execute anything necessary on plugin activation
@@ -83,8 +85,4 @@ function spckforms_deactivate() {
  */
 function spckforms_uninstall() {
 	// e.g. remove plugin options from database
-}
-
-function load_textdomain() {
-	load_theme_textdomain( 'spckforms', SPCKFORMS_PATH . '/languages' );
 }
