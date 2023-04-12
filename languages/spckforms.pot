@@ -1,0 +1,274 @@
+# Copyright (C) 2023 superhuit <tech@superhuit.ch>
+# This file is distributed under the GNU General Public License v3 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Starterpack Forms 1.0.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/starterpack-forms\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2023-04-12T11:58:37+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.7.1\n"
+"X-Domain: spckforms\n"
+
+#. Plugin Name of the plugin
+msgid "Starterpack Forms"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://github.com/superhuit-agency/starterpack-forms"
+msgstr ""
+
+#. Description of the plugin
+msgid "Starterpack's Form Custom Post Type."
+msgstr ""
+
+#. Author of the plugin
+msgid "superhuit <tech@superhuit.ch>"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://profiles.wordpress.org/superhuit/"
+msgstr ""
+
+#: form-type.php:68
+msgctxt "Post Type General Name"
+msgid "Forms"
+msgstr ""
+
+#: form-type.php:69
+msgctxt "Post Type Singular Name"
+msgid "Form"
+msgstr ""
+
+#: form-type.php:70
+msgid "Forms"
+msgstr ""
+
+#: form-type.php:71
+#: form-type.php:96
+msgid "Form"
+msgstr ""
+
+#: form-type.php:72
+msgid "Form Archives"
+msgstr ""
+
+#: form-type.php:73
+msgid "Form Attributes"
+msgstr ""
+
+#: form-type.php:75
+msgid "All Forms"
+msgstr ""
+
+#: form-type.php:76
+msgid "Add New Form"
+msgstr ""
+
+#: form-type.php:77
+msgid "Add New"
+msgstr ""
+
+#: form-type.php:78
+msgid "New Form"
+msgstr ""
+
+#: form-type.php:79
+msgid "Edit Form"
+msgstr ""
+
+#: form-type.php:80
+msgid "Update Form"
+msgstr ""
+
+#: form-type.php:81
+msgid "View Form"
+msgstr ""
+
+#: form-type.php:82
+msgid "View Forms"
+msgstr ""
+
+#: form-type.php:83
+msgid "Search Form"
+msgstr ""
+
+#: form-type.php:84
+msgid "Not found"
+msgstr ""
+
+#: form-type.php:85
+msgid "Not found in Trash"
+msgstr ""
+
+#: form-type.php:86
+msgid "Featured Image"
+msgstr ""
+
+#: form-type.php:87
+msgid "Set featured image"
+msgstr ""
+
+#: form-type.php:88
+msgid "Remove featured image"
+msgstr ""
+
+#: form-type.php:89
+msgid "Use as featured image"
+msgstr ""
+
+#: form-type.php:90
+msgid "Insert into Form"
+msgstr ""
+
+#: form-type.php:91
+msgid "Uploaded to this Form"
+msgstr ""
+
+#: form-type.php:92
+msgid "Form list"
+msgstr ""
+
+#: form-type.php:93
+msgid "Form list navigation"
+msgstr ""
+
+#: form-type.php:94
+msgid "Filter Form list"
+msgstr ""
+
+#: form-type.php:141
+msgid "Forms settings"
+msgstr ""
+
+#: form-type.php:214
+msgid "Notification email"
+msgstr ""
+
+#: form-type.php:215
+msgid "Fields"
+msgstr ""
+
+#: result-list.php:164
+msgid "Forms submissions"
+msgstr ""
+
+#: result-list.php:165
+#: result-list.php:265
+msgid "Submissions"
+msgstr ""
+
+#: result-list.php:285
+msgid "result"
+msgid_plural "results"
+msgstr[0] ""
+msgstr[1] ""
+
+#: starterpack-forms.php:41
+msgid "Please install composer dependencies for Starterpack Form CPT to work"
+msgstr ""
+
+#: submission.php:217
+msgctxt "SUPT Forms"
+msgid "Please enter a valid email address."
+msgstr ""
+
+#: submission.php:225
+msgctxt "SUPT Forms"
+msgid "Please upload a file."
+msgstr ""
+
+#. translators: %s is the types of files allowed
+#: submission.php:231
+msgid "The file is invalid. Allowed files are %s."
+msgstr ""
+
+#. translators: %s is the maximum size of a file
+#: submission.php:235
+msgid "The file is too large. Maximum file size %sMB."
+msgstr ""
+
+#: submission.php:259
+msgctxt "SUPT Forms"
+msgid "Please fill out this field."
+msgstr ""
+
+#. translators: %s is the name of the form
+#: submission.php:443
+msgctxt "SUPT Forms"
+msgid "Form submission from \"%s\""
+msgstr ""
+
+#. translators: %s is the name of the form
+#: templates/email-notification.php:17
+msgctxt "Form type email notification"
+msgid "Form submission from %s"
+msgstr ""
+
+#: templates/result-list-page.php:3
+msgctxt "SUPT Form Submissions"
+msgid "Forms Submissions"
+msgstr ""
+
+#: templates/result-list-page.php:10
+#: templates/result-list-page.php:12
+msgctxt "SUPT Form Submissions"
+msgid "Select a Form"
+msgstr ""
+
+#: templates/result-list-page.php:17
+msgctxt "SUPT Form Submissions"
+msgid "Show Submissions"
+msgstr ""
+
+#: templates/result-list-page.php:28
+msgctxt "Export all results"
+msgid "Export All"
+msgstr ""
+
+#: templates/result-list-page.php:31
+msgctxt "Delete all results"
+msgid "Delete All"
+msgstr ""
+
+#: templates/result-list-page.php:37
+msgctxt "SUPT Form Submissions"
+msgid "From: "
+msgstr ""
+
+#: templates/result-list-page.php:42
+msgctxt "SUPT Form Submissions"
+msgid "From"
+msgstr ""
+
+#: templates/result-list-page.php:44
+#: templates/result-list-page.php:54
+msgctxt "SUPT Form Submissions"
+msgid "Until"
+msgstr ""
+
+#: templates/result-list-page.php:55
+msgctxt "SUPT Form Submissions"
+msgid "Filter"
+msgstr ""
+
+#: templates/result-list-page.php:69
+msgctxt "SUPT Form Submissions"
+msgid "Submissions"
+msgstr ""
+
+#: templates/result-list-page.php:73
+#: templates/result-list-page.php:90
+msgctxt "SUPT Form Submissions"
+msgid "Date"
+msgstr ""
+
+#: templates/result-list-page.php:98
+#: templates/result-list-page.php:99
+msgctxt "Delete result item"
+msgid "Delete permanently"
+msgstr ""

@@ -13,7 +13,8 @@
 	<?php endif; ?>
 	<h2 style="text-align: center;"><?php
 		printf(
-			_x( 'Form submission from %s', 'Form type email notification', 'spckform'),
+			// translators: %s is the name of the form
+			_x( 'Form submission from %s', 'Form type email notification', 'spckforms'),
 			sprintf(
 				'<a href="%s" target="_blank">%s</a>',
 				$args['form']['link'],

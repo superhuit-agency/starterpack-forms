@@ -161,8 +161,8 @@ function filter_result_out( $timestamp ) : bool {
 function register_results_page() {
 	add_submenu_page(
 		'edit.php?post_type=form',
-		__('Forms submissions', 'supt'),
-		__('Submissions', 'supt'),
+		__('Forms submissions', 'spckforms'),
+		__('Submissions', 'spckforms'),
 		'edit_pages',
 		'form_sent',
 		__NAMESPACE__.'\render_page'
@@ -262,7 +262,7 @@ function register_columns_fields( $columns ) {
 
 	return array_merge(
 		array_slice( $columns, 0, $idxDate ),
-		array( COLUMN_RESULTS_NAME => __( 'Submissions', 'supt' ) ),
+		array( COLUMN_RESULTS_NAME => __( 'Submissions', 'spckforms' ) ),
 		array_slice( $columns, $idxDate )
 	);
 }
@@ -282,7 +282,7 @@ function populate_columns_fields( $column_name, $post_id ) {
 		: sprintf('<a href="%s">%d %s</a>',
 				admin_url( '/edit.php?post_type=form&page=form_sent&form='.$post_id ),
 				$nbSubmissions,
-				_n( 'result', 'results', $nbSubmissions, 'supt' )
+				_n( 'result', 'results', $nbSubmissions, 'spckforms' )
 			)
 	);
 }

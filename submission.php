@@ -214,7 +214,7 @@ class Submission {
 			$name  = $attrs['name'];
 
 			if ( strpos($block, 'email') !== false) {
-				$constraints[$name] = new Assert\Email(['message' => _x('Please enter a valid email address.', 'SUPT Forms', 'supt')]);
+				$constraints[$name] = new Assert\Email(['message' => _x('Please enter a valid email address.', 'SUPT Forms', 'spckforms')]);
 			}
 
 			else if ( strpos($block, 'file') ) {
@@ -222,15 +222,17 @@ class Submission {
 					$constrain_key = "$name--$i";
 
 					$constraints[$constrain_key][] = (isset($attrs['required']) && $attrs['required'] && $i === 0)
-						? new Assert\NotBlank(['message' => _x('Please upload a file.', 'SUPT Forms', 'supt')])
+						? new Assert\NotBlank(['message' => _x('Please upload a file.', 'SUPT Forms', 'spckforms')])
 						: new Assert\Optional();
 
 					$constraints[$constrain_key][] = new Assert\File([
 						'mimeTypes'        => $this->parse_file_accept($attrs['accept'] ?? null),
-						'mimeTypesMessage' => sprintf(__('The file is invalid. Allowed files are %s.', 'supt'), $attrs['accept']),
+						// translators: %s is the types of files allowed
+						'mimeTypesMessage' => sprintf(__('The file is invalid. Allowed files are %s.', 'spckforms'), $attrs['accept']),
 
 						'maxSize'          => (empty($attrs['maxFilesize']) ? '' : "{$attrs['maxFilesize']}M"),
-						'maxSizeMessage'   => sprintf(__('The file is too large. Maximum file size %sMB.', 'supt'), $attrs['maxFilesize']),
+						// translators: %s is the maximum size of a file
+						'maxSizeMessage'   => sprintf(__('The file is too large. Maximum file size %sMB.', 'spckforms'), $attrs['maxFilesize']),
 					]);
 				}
 
@@ -254,7 +256,7 @@ class Submission {
 			}
 
 			if ( isset($attrs['required']) && $attrs['required'] ) {
-				$notNull = new Assert\NotBlank(['message' => _x('Please fill out this field.', 'SUPT Forms', 'supt')]);
+				$notNull = new Assert\NotBlank(['message' => _x('Please fill out this field.', 'SUPT Forms', 'spckforms')]);
 
 				if ( !isset($constraints[$name])  ) $constraints[$name] = $notNull;
 				else $constraints[$name] = [ $notNull, $constraints[$name] ];
@@ -437,7 +439,8 @@ class Submission {
 		return [
 			'to'      => $to,
 			'from'    => ( empty($fromName) ? $fromEmail : "$fromName <$fromEmail>" ),
-			'subject' => sprintf( _x('Form submission from "%s"', 'SUPT Forms', 'supt'), $form_name ),
+			// translators: %s is the name of the form
+			'subject' => sprintf( _x('Form submission from "%s"', 'SUPT Forms', 'spckforms'), $form_name ),
 			'body'    => spckforms_get_template_part( 'email-notification.php', $context, false ),
 		];
 	}
