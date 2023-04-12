@@ -1,25 +1,34 @@
 {
-    "name": "supt/starterpack-forms",
+    "name": "superhuit/starterpack-forms",
     "description": "Starterpack's Form Custom Post Type.",
-    "version": "1.0.1",
-    "type": "wordpress-plugin",
-    "license": "MIT",
+    "keywords": [
+        "wordpress",
+        "custom-post-type",
+        "form"
+    ],
+    "license": "GPL-3.0-or-later",
+    "homepage": "https://github.com/superhuit-agency/starterpack-forms",
     "authors": [
         {
             "name": "superhuit",
             "email": "tech@superhuit.ch",
-            "homepage": "https://www.superhuit.ch/en"
+            "homepage": "https://superhuit.ch",
+            "role": "Developer"
         }
     ],
-    "require": {
-        "php": ">=7.4",
-        "composer/installers": "^1.9",
-        "symfony/mime": "^5.3",
-        "symfony/validator": "^5.3"
+    "support": {
+        "issues": "https://github.com/superhuit-agency/starterpack-forms/issues"
     },
     "config": {
+        "optimize-autoloader": true,
         "allow-plugins": {
             "composer/installers": true
         }
+    },
+    "require": {
+        "php": ">=7.4",
+        "composer/installers": "^2.2",
+        "symfony/mime": "^5.3",
+        "symfony/validator": "^5.3"
     }
 }
