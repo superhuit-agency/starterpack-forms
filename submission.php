@@ -240,11 +240,15 @@ class Submission {
 			}
 
 			else if ( in_array($block, [
+				'supt/checkbox',
+				'supt/form-section-breaker',
+				'supt/input-checkbox',
+				'supt/input-option-radio',
+				'supt/input-radio',
+				'supt/input-select',
 				'supt/input-text',
 				'supt/input-textarea',
-				'supt/input-yesno',
-				'supt/input-select',
-				'supt/form-section-breaker'
+				'supt/radio',
 			]) ) {
 				// do nothing special (but keep these fields)
 			}
@@ -316,7 +320,7 @@ class Submission {
 				}
 			}
 
-			// input-text, input-email, input-textarea, input-yesno
+			// input-text, input-email, input-textarea, input-checkbox, input-radio, input-select
 			else {
 				if ( strpos($block, 'email') !== false ) {
 					if (empty($this->userEmail) && !empty($this->params[$name])) $this->userEmail = $this->params[$name];
