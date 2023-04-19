@@ -3,7 +3,7 @@
  * Plugin Name:       Starterpack Forms
  * Plugin URI:        https://github.com/superhuit-agency/starterpack-forms
  * Description:       Starterpack's Form Custom Post Type.
- * Version:           1.0.6
+ * Version:           1.0.7
  * Requires at least: 5.8
  * Requires PHP:      7.4
  * Author:            superhuit <tech@superhuit.ch>
@@ -28,7 +28,7 @@
 
 defined( 'ABSPATH' ) or die( 'Cheatin&#8217; uh?' );
 
-define( 'SPCKFORMS_PLUGIN_VERSION', '1.0.6' );
+define( 'SPCKFORMS_PLUGIN_VERSION', '1.0.7' );
 define( 'SPCKFORMS_PATH', __DIR__ );
 define( 'SPCKFORMS_URI', plugin_dir_url(__FILE__) );
 
