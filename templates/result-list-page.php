@@ -105,18 +105,11 @@
 							<?php foreach ( $args['form']['fields'] as $field) : ?>
 								<?php if ( $field['type'] !== 'supt/form-section-breaker' ) : ?>
 									<td class="column-<?php echo $field['name']; ?> column-type-<?php echo $field['type']; ?>" data-colname="<?php echo $field['name']; ?>">
-										<?php if ( $field['type'] === 'checkbox' ) : ?>
-											<?php printf(
-												'<span class="dashicons dashicons-%s"></span>',
-												( (empty($item[$field['name']]) || $item[$field['name']] === 'off') ? 'no-alt' : 'yes' )
-											); ?>
-										<?php else : ?>
-											<?php if(is_array($item[$field['name']])):
-												echo join(',', $item[$field['name']]);
-											else :
-												echo $item[$field['name']];
-											endif ?>
-										<?php endif; ?>
+										<?php if(is_array($item[$field['name']])):
+											echo join(',', $item[$field['name']]);
+										else :
+											echo $item[$field['name']];
+										endif ?>
 									</td>
 								<?php endif; ?>
 							<?php endforeach; ?>
