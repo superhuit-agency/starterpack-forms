@@ -156,6 +156,10 @@ class Submission {
 		$validator = Validation::createValidator();
 
 		$this->fields = (array)get_field(META_KEY_FIELDS_NAME, $this->form_id);
+		// Filter fields to remove 'supt/form-section-breaker' one as we don't want to send any data related to this field
+		$this->fields = array_filter($this->fields, function($field) {
+			return $field['block'] !== 'supt/form-section-breaker';
+		});
 
 		$this->set_upload_dirs($this->uploadId);
 		$this->payload = $this->get_payload();
@@ -241,7 +245,6 @@ class Submission {
 
 			else if ( in_array($block, [
 				'supt/checkbox',
-				'supt/form-section-breaker',
 				'supt/input-checkbox',
 				'supt/input-option-radio',
 				'supt/input-radio',
