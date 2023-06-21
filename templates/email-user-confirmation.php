@@ -114,7 +114,7 @@
 													height="<?php echo $args['site']['logo']['height']; ?>"
 													src="<?php echo $args['site']['logo']['src']; ?>"
 													alt="<?php echo $args['site']['logo']['alt']; ?>"
-													style="outline:none; text-decoration:none; -ms-interpolation-mode:bicubic; width:<?php echo $args['site']['logo']['width']; ?>px; height:<?php echo $args['site']['logo']['height']; ?>px; max-width:100%; clear:both; display:block; border:none;"
+													style="outline:none; text-decoration:none; -ms-interpolation-mode:bicubic; width:<?php echo $args['site']['logo']['width']; ?>px; height:<?php echo $args['site']['logo']['height']; ?>px; max-width:100%; clear:both; display:block; border:none; margin-left:auto; margin-right:auto;"
 												>
 												<?php endif; ?>
 											</a>
@@ -204,7 +204,7 @@
 										height="<?php echo $args['site']['logo']['height']; ?>"
 										src="<?php echo $args['site']['logo']['src']; ?>"
 										alt="<?php echo $args['site']['logo']['alt']; ?>"
-										style="outline:none; text-decoration:none; -ms-interpolation-mode:bicubic; width:100px; max-width:100%; clear:both; display:block; padding-top: 10px;"
+										style="outline:none; text-decoration:none; -ms-interpolation-mode:bicubic; width:100px; height: auto; max-width:100%; clear:both; display:block; padding-top: 10px;"
 									>
 								</a>
 							</div>
