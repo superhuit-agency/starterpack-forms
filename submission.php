@@ -481,13 +481,16 @@ class Submission {
 	 * @return bool
 	 */
 	private function send_mail($params) {
+		// Remove weird chars like `&#8211;`
+		$from = preg_replace("/\\/", '', $params['from']);
+		$subject = preg_replace("/&[^;]+;\s?/", '', $params['subject']);
+
+
 		$headers = array(
-			"From: {$params['from']}",
+			"From: {$from}",
 			'Content-Type: text/html; charset="UTF-8";'
 		);
 
-		// Remove weird chars like `&#8211;`
-		$subject = preg_replace("/&[^;]+;\s?/", '', $params['subject']);
 
 		$mail_sent = wp_mail( $params['to'], $subject, $params['body'], $headers );
 
