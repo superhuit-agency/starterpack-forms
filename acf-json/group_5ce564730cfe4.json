@@ -19,6 +19,72 @@
             "placement": "top",
             "endpoint": 0
         },
+				{
+					"key": "field_5ce5649117b5e",
+					"label": "Opt-ins",
+					"name": "opt_ins",
+					"aria-label": "",
+					"type": "repeater",
+					"instructions": "",
+					"required": 0,
+					"conditional_logic": 0,
+					"wrapper": {
+							"width": "",
+							"class": "",
+							"id": ""
+					},
+					"collapsed": "field_5ce564b617b5f",
+					"min": 1,
+					"max": 0,
+					"layout": "block",
+					"button_label": "Add Row",
+					"rows_per_page": 20,
+					"sub_fields": [
+						{
+							"key": "field_5ce564b617b5f",
+							"label": "Text",
+							"name": "text",
+							"aria-label": "",
+							"type": "wysiwyg",
+							"instructions": "",
+							"required": 1,
+							"conditional_logic": 0,
+							"wrapper": {
+									"width": "70",
+									"class": "short-editor-50",
+									"id": ""
+							},
+							"show_in_graphql": 1,
+							"default_value": "",
+							"tabs": "visual",
+							"toolbar": "basic",
+							"media_upload": 0,
+							"delay": 1,
+							"parent_repeater": "field_5ce5649117b5e"
+						},
+						{
+							"key": "field_5ce564ec17b60",
+							"label": "Required",
+							"name": "required",
+							"aria-label": "",
+							"type": "true_false",
+							"instructions": "",
+							"required": 0,
+							"conditional_logic": 0,
+							"wrapper": {
+								"width": "30",
+								"class": "",
+								"id": ""
+							},
+							"message": "",
+							"default_value": 0,
+							"ui": 1,
+							"ui_on_text": "",
+							"ui_off_text": "",
+							"parent_repeater": "field_5ce5649117b5e"
+						}
+					]
+				},
         {
             "key": "field_5e6257f788404",
             "label": "Submit button label",

@@ -55,6 +55,7 @@ add_filter( 'acf/prepare_field/key=field_5cfa2f0ada5e2', __NAMESPACE__.'\acf_pre
 add_filter( 'acf/prepare_field/key=field_5cfa2f0ada5e3', __NAMESPACE__.'\acf_prepare_field_placeholder' ); // email_autoreply - body
 add_action( 'acf/render_field/key=field_5cfa2f0ada5e3' , __NAMESPACE__.'\acf_render_wysiwyg_placeholder' ); // email_autoreply - body
 add_filter( 'acf/prepare_field/key=field_5cfa2f0ada5e3', __NAMESPACE__.'\acf_prepare_field_email_body_desc' );
+add_filter( 'acf/load_value/key=field_5ce5649117b5e', __NAMESPACE__.'\acf_set_opt_ins_default_value' ); // opt-ins default value
 
 add_action( 'rest_api_init', __NAMESPACE__.'\rest_api_register_metas' );
 
@@ -263,7 +264,7 @@ function load_acf_json($paths) {
 }
 
 /**
- * Populate the placholder attribute with the globale Options
+ * Populate the placeholder attribute with the globale Options
  */
 function acf_prepare_field_placeholder( $field ) {
 	if ( $field['prefix'] === 'acf' ) {
@@ -323,6 +324,18 @@ function acf_prepare_field_email_body_desc( $field ) {
 	return $field;
 }
 
+function acf_set_opt_ins_default_value( $value ) {
+	if(!$value) {
+		$value = [];
+		$value[] = array(
+			'field_5ce564b617b5f' => 'I consent that my data will be stored in order to respond to my enquiry, in accordance with the <a href=\'/privacy-policy\'>privacy policy</a>.',
+			'field_5ce564ec17b60' => 1
+		);
+	}
+
+	return $value;
+}
+
 function rest_api_register_metas() {
 	register_rest_field( NAME, 'fields', [
 		'get_callback' => __NAMESPACE__.'\get_form_fields',
@@ -336,6 +349,21 @@ function rest_api_register_metas() {
 
 function get_form_fields( $post, $field_name = null, $request = null ) {
 	return get_post_meta( $post['id'], META_KEY_FIELDS_NAME, true );
+}
+
+function get_form_opt_ins( $post, $field_name = null, $request = null ) {
+	$opt_ins = array_map(function($opt) {
+		$label = trim(strip_tags($opt['text'], '<a>'));
+		$name = sanitize_title($label);
+		return [
+			'label'    => $label,
+			'id'       => $name,
+			'name'     => $name,
+			'required' => $opt['required']
+		];
+	},  (array)get_field( 'opt_ins', $post['id'] ));
+
+	return $opt_ins;
 }
 
 function get_form_strings( $post, $field_name = null, $request = null ) {
