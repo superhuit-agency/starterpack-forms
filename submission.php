@@ -184,6 +184,15 @@ class Submission {
 			return;
 		}
 
+		/**
+		 * Fires before submission of successful form.
+		 *
+		 * @param int $form_id The ID of the form.
+		 * @param array $payload The sanitized payload of the form.
+		 * @param array $fields The fields of the form.
+		 */
+		do_action( 'spckforms_before_submission', $this->form_id, $this->payload, $this->fields );
+
 		$this->saved_to_db = $this->maybe_save_submission_to_db( $this->form_id, array_merge($this->payload, ['timestamp' => time()]) );
 
 		if ( !($send_emails = $this->send_emails()) && ($sould_send_notif = $this->should_send_notif()) ) { // order is important! we want to run send_emails() all the time, but fail only if email submission is required

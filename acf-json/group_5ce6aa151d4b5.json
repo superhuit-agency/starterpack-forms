@@ -1,11 +1,12 @@
 {
 	"key": "group_5ce6aa151d4b5",
-	"title": "Forms options",
+	"title": "Forms configuration",
 	"fields": [
 			{
 					"key": "field_5ce6aa43680aa",
 					"label": "General",
 					"name": "",
+					"aria-label": "",
 					"type": "tab",
 					"instructions": "",
 					"required": 0,
@@ -22,6 +23,7 @@
 					"key": "field_5ce6af7d6b32b",
 					"label": "",
 					"name": "",
+					"aria-label": "",
 					"type": "message",
 					"instructions": "",
 					"required": 0,
@@ -40,6 +42,7 @@
 					"key": "field_5ce6aa76680ab",
 					"label": "Send to [email]",
 					"name": "form_email_to",
+					"aria-label": "",
 					"type": "email",
 					"instructions": "Forms will be sent to this email address by default.",
 					"required": 1,
@@ -59,6 +62,7 @@
 					"key": "field_5ce6aa95680ac",
 					"label": "Send from [email]",
 					"name": "form_email_from",
+					"aria-label": "",
 					"type": "email",
 					"instructions": "This email address will appear as sender, by default.",
 					"required": 1,
@@ -78,6 +82,7 @@
 					"key": "field_5ce6aaba680ad",
 					"label": "Send from [name]",
 					"name": "form_name_from",
+					"aria-label": "",
 					"type": "text",
 					"instructions": "This name will appear as sender, by default.",
 					"required": 0,
@@ -98,6 +103,7 @@
 					"key": "field_5cff5b12c438f",
 					"label": "Messages",
 					"name": "",
+					"aria-label": "",
 					"type": "tab",
 					"instructions": "",
 					"required": 0,
@@ -114,6 +120,7 @@
 					"key": "field_5cff5b54c4391",
 					"label": "Success message",
 					"name": "form_success_message",
+					"aria-label": "",
 					"type": "textarea",
 					"instructions": "This text shows when the form was sent successfully.",
 					"required": 1,
@@ -134,6 +141,7 @@
 					"key": "field_5cff5b68c4392",
 					"label": "Error message",
 					"name": "form_error_message",
+					"aria-label": "",
 					"type": "textarea",
 					"instructions": "This text shows when the form failed to send.",
 					"required": 1,
@@ -154,6 +162,7 @@
 					"key": "field_5ce6aafb680ae",
 					"label": "Email templates",
 					"name": "",
+					"aria-label": "",
 					"type": "tab",
 					"instructions": "",
 					"required": 0,
@@ -170,6 +179,7 @@
 					"key": "field_5ce6ab0f680af",
 					"label": "",
 					"name": "",
+					"aria-label": "",
 					"type": "message",
 					"instructions": "",
 					"required": 0,
@@ -188,6 +198,7 @@
 					"key": "field_5ce6ac3e680b3",
 					"label": "Acknowledgment of receipt (autoreply)",
 					"name": "email_autoreply",
+					"aria-label": "",
 					"type": "group",
 					"instructions": "",
 					"required": 0,
@@ -204,6 +215,7 @@
 									"key": "field_5ce6ac3e680b4",
 									"label": "Subject",
 									"name": "subject",
+									"aria-label": "",
 									"type": "text",
 									"instructions": "",
 									"required": 1,
@@ -224,6 +236,7 @@
 									"key": "field_5ce6ac3e680b5",
 									"label": "Template",
 									"name": "template",
+									"aria-label": "",
 									"type": "wysiwyg",
 									"instructions": "",
 									"required": 1,
@@ -239,148 +252,6 @@
 									"toolbar": "full",
 									"media_upload": 0,
 									"delay": 0
-							}
-					]
-			},
-			{
-					"key": "field_5ce6ac87680b6",
-					"label": "SMTP",
-					"name": "",
-					"type": "tab",
-					"instructions": "",
-					"required": 0,
-					"conditional_logic": 0,
-					"wrapper": {
-							"width": "",
-							"class": "",
-							"id": ""
-					},
-					"placement": "top",
-					"endpoint": 1
-			},
-			{
-					"key": "field_5ce6ac95680b7",
-					"label": "Enable",
-					"name": "smtp_enable",
-					"type": "true_false",
-					"instructions": "If enabled, emails will be sent through the configured SMTP server.",
-					"required": 0,
-					"conditional_logic": 0,
-					"wrapper": {
-							"width": "",
-							"class": "",
-							"id": ""
-					},
-					"wpml_cf_preferences": 2,
-					"message": "",
-					"default_value": 0,
-					"ui": 1,
-					"ui_on_text": "",
-					"ui_off_text": ""
-			},
-			{
-					"key": "field_5ce6acbe680b8",
-					"label": "",
-					"name": "smtp",
-					"type": "group",
-					"instructions": "",
-					"required": 0,
-					"conditional_logic": [
-							[
-									{
-											"field": "field_5ce6ac95680b7",
-											"operator": "==",
-											"value": "1"
-									}
-							]
-					],
-					"wrapper": {
-							"width": "",
-							"class": "",
-							"id": ""
-					},
-					"wpml_cf_preferences": 1,
-					"layout": "block",
-					"sub_fields": [
-							{
-									"key": "field_5ce6acdd680b9",
-									"label": "Server address",
-									"name": "host",
-									"type": "text",
-									"instructions": "IP address or domain name.",
-									"required": 1,
-									"conditional_logic": 0,
-									"wrapper": {
-											"width": "",
-											"class": "",
-											"id": ""
-									},
-									"wpml_cf_preferences": 2,
-									"default_value": "",
-									"placeholder": "",
-									"prepend": "",
-									"append": "",
-									"maxlength": ""
-							},
-							{
-									"key": "field_5ce6ace9680ba",
-									"label": "Port",
-									"name": "port",
-									"type": "number",
-									"instructions": "",
-									"required": 1,
-									"conditional_logic": 0,
-									"wrapper": {
-											"width": "",
-											"class": "",
-											"id": ""
-									},
-									"wpml_cf_preferences": 2,
-									"default_value": 465,
-									"placeholder": "",
-									"prepend": "",
-									"append": "",
-									"min": "",
-									"max": "",
-									"step": ""
-							},
-							{
-									"key": "field_5ce6ad03680bb",
-									"label": "Username",
-									"name": "username",
-									"type": "text",
-									"instructions": "",
-									"required": 1,
-									"conditional_logic": 0,
-									"wrapper": {
-											"width": "50",
-											"class": "",
-											"id": ""
-									},
-									"wpml_cf_preferences": 2,
-									"default_value": "",
-									"placeholder": "",
-									"prepend": "",
-									"append": "",
-									"maxlength": ""
-							},
-							{
-									"key": "field_5ce6ad10680bc",
-									"label": "Password",
-									"name": "password",
-									"type": "password",
-									"instructions": "",
-									"required": 0,
-									"conditional_logic": 0,
-									"wrapper": {
-											"width": "50",
-											"class": "",
-											"id": ""
-									},
-									"wpml_cf_preferences": 2,
-									"placeholder": "",
-									"prepend": "",
-									"append": ""
 							}
 					]
 			}
@@ -400,9 +271,12 @@
 	"label_placement": "top",
 	"instruction_placement": "label",
 	"hide_on_screen": "",
-	"active": 1,
+	"active": true,
 	"description": "",
-	"metabox_title": "",
-	"metabox_hide_title": 0,
-	"modified": 1574852816
+	"show_in_rest": 0,
+	"show_in_graphql": 0,
+	"graphql_field_name": "formsOptions",
+	"map_graphql_types_from_location_rules": 0,
+	"graphql_types": "",
+	"modified": 1690386761
 }
