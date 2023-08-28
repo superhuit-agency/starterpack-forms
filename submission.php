@@ -243,24 +243,24 @@ class Submission {
 				continue;
 			}
 
-			else if ( in_array($block, [
-				'supt/checkbox',
-				'supt/input-checkbox',
-				'supt/input-option-radio',
-				'supt/input-radio',
-				'supt/input-select',
-				'supt/input-text',
-				'supt/input-textarea',
-				'supt/radio',
-			]) ) {
-				// do nothing special (but keep these fields)
-			}
+			// else if ( in_array($block, [
+			// 	'supt/checkbox',
+			// 	'supt/input-checkbox',
+			// 	'supt/input-option-radio',
+			// 	'supt/input-radio',
+			// 	'supt/input-select',
+			// 	'supt/input-text',
+			// 	'supt/input-textarea',
+			// 	'supt/radio',
+			// ]) ) {
+			// 	// do nothing special (but keep these fields)
+			// }
 
-			else {
-				// no constraint for this field
-				// -> validation will fail since this field was not expected
-				continue;
-			}
+			// else {
+			// 	// no constraint for this field
+			// 	// -> validation will fail since this field was not expected
+			// 	continue;
+			// }
 
 			if ( isset($attrs['required']) && $attrs['required'] ) {
 				$notNull = new Assert\NotBlank(['message' => _x('Please fill out this field.', 'SUPT Forms', 'spckforms')]);
@@ -273,6 +273,8 @@ class Submission {
 				$constraints[$name] = new Assert\Optional();
 			}
 		}
+		// Add filter for constraints
+		$constraints = apply_filters( 'spckforms_constraints', $constraints, $this->form_id, $this->fields);
 
 		return $constraints;
 	}
