@@ -414,7 +414,7 @@ class Submission {
 		$data = [];
 		foreach ($this->payload_attrs as $name => $attrs) {
 			if ( isset($attrs['type']) && $attrs['type'] === 'file' ) continue;
-			$data["{{$name}}"] = $attrs['value'];
+			$data["{{".$name."}}"] = $attrs['value'];
 			$data["{{ $name }}"] = $attrs['value']; // make sure it matches with/without spaces
 		}
 
