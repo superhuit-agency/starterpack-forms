@@ -54,7 +54,7 @@ class Submission {
 	private $userEmail;
 
 	function __construct() {
-		add_action( 'init', array($this, 'handle_submit') );
+		add_action( 'init', array($this, 'handle_submit'), 100 ); // Do not go below 100 to make sure all other init functions have been called (especially ACF init functions)
 		add_action( 'init', array($this, 'handle_file_upload') );
 	}
 

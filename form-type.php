@@ -33,7 +33,7 @@ const ALLOWED_BLOCKS = [
  * Action & filter hooks
  */
 add_action( 'init', __NAMESPACE__.'\register' );
-add_action( 'init', __NAMESPACE__.'\register_options_page' );
+add_action( 'acf/init', __NAMESPACE__.'\register_options_page' );
 
 add_action( 'admin_enqueue_scripts', __NAMESPACE__.'\enqueue_admin_assets' );
 add_filter( 'allowed_block_types_all', __NAMESPACE__.'\allowed_block_types', 10, 2);
