@@ -239,13 +239,13 @@ class Submission {
 						: new Assert\Optional();
 
 					$constraints[$constrain_key][] = new Assert\File([
-						'mimeTypes'        => $this->parse_file_accept($attrs['accept'] ?? null),
+						'mimeTypes'        => $this->parse_file_accept(isset($attrs['accept']) ? $attrs['accept'] : null),
 						// translators: %s is the types of files allowed
-						'mimeTypesMessage' => sprintf(__('The file is invalid. Allowed files are %s.', 'spckforms'), $attrs['accept']),
+						'mimeTypesMessage' => sprintf(__('The file is invalid. Allowed files are %s.', 'spckforms'), isset($attrs['accept']) ? $attrs['accept'] : ''),
 
-						'maxSize'          => (empty($attrs['maxFilesize']) ? '' : "{$attrs['maxFilesize']}M"),
+						'maxSize'          => (isset($attrs['maxFilesize']) ? "{$attrs['maxFilesize']}M" : null),
 						// translators: %s is the maximum size of a file
-						'maxSizeMessage'   => sprintf(__('The file is too large. Maximum file size %sMB.', 'spckforms'), $attrs['maxFilesize']),
+						'maxSizeMessage'   => sprintf(__('The file is too large. Maximum file size %sMB.', 'spckforms'), isset($attrs['maxFilesize']) ? $attrs['maxFilesize'] : ''),
 					]);
 				}
 
@@ -330,7 +330,12 @@ class Submission {
 					}
 
 					$payload[$payload_name] = $payload_data;
-					if (!empty($value)) $attrs['value'][] = $value;
+					if (empty($value)) {
+						$attrs['value'] = [];
+					}
+					else {
+						$attrs['value'][] = $value;
+					}
 				}
 			}
 
