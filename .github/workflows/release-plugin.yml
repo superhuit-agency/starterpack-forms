@@ -1,5 +1,5 @@
 ---
-name: 'Release Starterpack-forms plugin'
+name: "Release Starterpack-forms plugin"
 
 on:
   push:
@@ -25,18 +25,18 @@ jobs:
         env:
           MODE: local
           SOURCE: .
-          TARGET: ${{ env.PLUGIN_NAME }}
+          TARGET: ${{ env.PLUGIN_NAME }}-${{  github.ref_name }}
           ARGS: -r --exclude=.editorconfig --exclude=.git --exclude=.github --exclude=.gitignore --exclude=composer.json --exclude=composer.lock --exclude=README.md
 
       - name: Generate zip file
         uses: montudor/action-zip@v1
         with:
-          args: zip -qq -r ${{ env.PLUGIN_NAME }}.zip ${{ env.PLUGIN_NAME }}
+          args: zip -qq -r ${{ env.PLUGIN_NAME }}-${{  github.ref_name }}.zip ${{ env.PLUGIN_NAME }}-${{  github.ref_name }}
 
       - name: Create release
-        uses: 'marvinpinto/action-automatic-releases@latest'
+        uses: "marvinpinto/action-automatic-releases@latest"
         with:
-          repo_token: '${{ secrets.GITHUB_TOKEN }}'
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: false
           files: |
-            ${{ env.PLUGIN_NAME }}.zip
+            ${{ env.PLUGIN_NAME }}-${{  github.ref_name }}.zip
