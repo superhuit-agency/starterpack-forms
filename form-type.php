@@ -170,7 +170,7 @@ function register_metas_graphql() {
 		'type'    => 'FormStrings',
 		'resolve' => function( $source, $args, $context, $info ) {
 			return [
-				'submitLabel' => get_field( 'submit', $source->id ),
+				'submitLabel' => get_field( 'submit', $source->ID ),
 			];
 		},
 	]);
@@ -198,7 +198,7 @@ function register_metas_graphql() {
 					'name'     => $name,
 					'required' => $opt['required']
 				];
-			},  (array)get_field( 'opt_ins', $source->id ));
+			},  (array)get_field( 'opt_ins', $source->ID ));
 
 			return $opt_ins;
 		},
