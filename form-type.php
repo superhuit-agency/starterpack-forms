@@ -57,8 +57,6 @@ add_action( 'acf/render_field/key=field_5cfa2f0ada5e3' , __NAMESPACE__.'\acf_ren
 add_filter( 'acf/prepare_field/key=field_5cfa2f0ada5e3', __NAMESPACE__.'\acf_prepare_field_email_body_desc' );
 add_filter( 'acf/load_value/key=field_5ce5649117b5e', __NAMESPACE__.'\acf_set_opt_ins_default_value' ); // opt-ins default value
 
-add_action( 'rest_api_init', __NAMESPACE__.'\rest_api_register_metas' );
-
 add_filter( 'spcki18n_translation_strings_filepaths', __NAMESPACE__.'\add_translation_strings_filepath' );
 
 
@@ -336,41 +334,6 @@ function acf_set_opt_ins_default_value( $value ) {
 	return $value;
 }
 
-function rest_api_register_metas() {
-	register_rest_field( NAME, 'fields', [
-		'get_callback' => __NAMESPACE__.'\get_form_fields',
-		'schema' => null,
-	] );
-	register_rest_field( NAME, 'strings', [
-		'get_callback' => __NAMESPACE__.'\get_form_strings',
-		'schema' => null,
-	] );
-}
-
-function get_form_fields( $post, $field_name = null, $request = null ) {
-	return get_post_meta( $post['id'], META_KEY_FIELDS_NAME, true );
-}
-
-function get_form_opt_ins( $post, $field_name = null, $request = null ) {
-	$opt_ins = array_map(function($opt) {
-		$label = trim(strip_tags($opt['text'], '<a>'));
-		$name = sanitize_title($label);
-		return [
-			'label'    => $label,
-			'id'       => $name,
-			'name'     => $name,
-			'required' => $opt['required']
-		];
-	},  (array)get_field( 'opt_ins', $post['id'] ));
-
-	return $opt_ins;
-}
-
-function get_form_strings( $post, $field_name = null, $request = null ) {
-	return [
-		'submitLabel' => get_field( 'submit', $post['id'] ),
-	];
-}
 
 function add_translation_strings_filepath( $filepaths ) {
 	$filepaths[] = SPCKFORMS_PATH .'/translation-strings.json';
