@@ -147,7 +147,7 @@ function register_metas() {
  */
 function register_metas_graphql() {
 
-	register_graphql_field( GRAPHQL_TYPE_NAME, META_KEY_FIELDS_NAME, [
+	register_graphql_field( GRAPHQL_TYPE_NAME, 'fields', [
 		'type'    => 'string',
 		'resolve' => function( $source, $args, $context, $info ) {
 			$fields = get_post_meta( $source->ID, META_KEY_FIELDS_NAME, true );
