@@ -22,7 +22,8 @@
     "config": {
         "optimize-autoloader": true,
         "allow-plugins": {
-            "composer/installers": true
+            "composer/installers": true,
+            "johnpbloch/wordpress-core-installer": false
         }
     },
     "require": {
@@ -30,5 +31,8 @@
         "composer/installers": "^2.2",
         "symfony/mime": "^5.3",
         "symfony/validator": "^5.3"
+    },
+    "require-dev": {
+        "johnpbloch/wordpress": "6.5"
     }
 }
