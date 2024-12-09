@@ -52,7 +52,6 @@ require_once __DIR__ . '/helpers/_loader.php';
 require_once __DIR__ . '/form-type.php';
 require_once __DIR__ . '/result-list.php';
 require_once __DIR__ . '/submission.php';
-require_once __DIR__ . '/format-block.php';
 
 // ====
 // Action & filter hooks

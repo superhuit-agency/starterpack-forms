@@ -11,6 +11,7 @@ use function SUPT\StarterpackForms\Helpers\truncate;
 const NAME = 'form';
 const COLUMN_FIELDS_NAME = 'fields';
 const COLUMN_NOTIFICATION_NAME = 'notification';
+const GRAPHQL_TYPE_NAME = 'Form';
 
 const META_KEY_FIELDS_NAME = 'form_fields';
 
@@ -34,6 +35,8 @@ const ALLOWED_BLOCKS = [
  */
 add_action( 'init', __NAMESPACE__.'\register' );
 add_action( 'acf/init', __NAMESPACE__.'\register_options_page' );
+add_action( 'init', __NAMESPACE__.'\register_metas' );
+add_action( 'graphql_register_types', __NAMESPACE__.'\register_metas_graphql' );
 
 add_action( 'admin_enqueue_scripts', __NAMESPACE__.'\enqueue_admin_assets' );
 add_filter( 'allowed_block_types_all', __NAMESPACE__.'\allowed_block_types', 10, 2);
@@ -56,8 +59,6 @@ add_filter( 'acf/prepare_field/key=field_5cfa2f0ada5e3', __NAMESPACE__.'\acf_pre
 add_action( 'acf/render_field/key=field_5cfa2f0ada5e3' , __NAMESPACE__.'\acf_render_wysiwyg_placeholder' ); // email_autoreply - body
 add_filter( 'acf/prepare_field/key=field_5cfa2f0ada5e3', __NAMESPACE__.'\acf_prepare_field_email_body_desc' );
 add_filter( 'acf/load_value/key=field_5ce5649117b5e', __NAMESPACE__.'\acf_set_opt_ins_default_value' ); // opt-ins default value
-
-add_action( 'rest_api_init', __NAMESPACE__.'\rest_api_register_metas' );
 
 add_filter( 'spcki18n_translation_strings_filepaths', __NAMESPACE__.'\add_translation_strings_filepath' );
 
@@ -117,9 +118,93 @@ function register() {
 			'map_meta_cap'          => true,
 			'show_in_rest'          => true,
 			'rewrite' => false, //array('slug' => 'events', 'with_front' => false),
+
+			'show_in_graphql'       => true,
+			'graphql_single_name'   => 'form',
+			'graphql_plural_name'   => 'forms',
+			'graphql_singular_type' => 'Form',
+			'graphql_plural_type'   => 'Forms',
 		)
 	);
 }
+
+/**
+ * Properly register the form's metas
+ */
+function register_metas() {
+	register_post_meta(
+		NAME, META_KEY_FIELDS_NAME,
+		[
+			'type' => 'array',
+			'single' => true,
+			'show_in_rest' => false
+		]
+	);
+}
+
+/**
+ * Register the available form's metas in GraphQL
+ */
+function register_metas_graphql() {
+
+	register_graphql_field( GRAPHQL_TYPE_NAME, 'fields', [
+		'type'    => 'string',
+		'resolve' => function( $source, $args, $context, $info ) {
+			$fields = get_post_meta( $source->ID, META_KEY_FIELDS_NAME, true );
+
+			return json_encode($fields);
+		},
+	]);
+
+	register_graphql_type( 'FormStrings', [
+		'description' => _x( 'Form fields data', 'GraphQl type', 'supt' ),
+		'fields'      => [
+			'submitLabel' => [
+				'type'        => 'string',
+				'description' => _x('Submit button label', 'GraphQl field', 'supt'),
+			],
+		],
+	] );
+
+	register_graphql_field( GRAPHQL_TYPE_NAME, 'strings', [
+		'type'    => 'FormStrings',
+		'resolve' => function( $source, $args, $context, $info ) {
+			return [
+				'submitLabel' => get_field( 'submit', $source->ID ),
+			];
+		},
+	]);
+
+	register_graphql_type( 'OptIn', [
+		'description' => _x( 'Form opt in field data', 'GraphQl type', 'supt' ),
+		'fields'      => [
+			'label'    => [ 'type' => 'string' ],
+			'id'       => [ 'type' => 'string' ],
+			'name'     => [ 'type' => 'string' ],
+			'required' => [ 'type' => 'boolean' ],
+		],
+	] );
+
+	register_graphql_field( GRAPHQL_TYPE_NAME, 'optIns', [
+		'type'    => [ 'list_of' => 'OptIn' ],
+		'resolve' => function( $source, $args, $context, $info ) {
+			$opt_ins = array_map(function($opt) {
+				$label = trim(strip_tags($opt['text'], '<a>'));
+				$name = sanitize_title($label);
+
+				return [
+					'label'    => $label,
+					'id'       => $name,
+					'name'     => $name,
+					'required' => $opt['required']
+				];
+			},  (array)get_field( 'opt_ins', $source->ID ));
+
+			return $opt_ins;
+		},
+	]);
+}
+
 
 function enqueue_admin_assets() {
 	if ( get_post_type() !== NAME ) return;
@@ -336,41 +421,6 @@ function acf_set_opt_ins_default_value( $value ) {
 	return $value;
 }
 
-function rest_api_register_metas() {
-	register_rest_field( NAME, 'fields', [
-		'get_callback' => __NAMESPACE__.'\get_form_fields',
-		'schema' => null,
-	] );
-	register_rest_field( NAME, 'strings', [
-		'get_callback' => __NAMESPACE__.'\get_form_strings',
-		'schema' => null,
-	] );
-}
-
-function get_form_fields( $post, $field_name = null, $request = null ) {
-	return get_post_meta( $post['id'], META_KEY_FIELDS_NAME, true );
-}
-
-function get_form_opt_ins( $post, $field_name = null, $request = null ) {
-	$opt_ins = array_map(function($opt) {
-		$label = trim(strip_tags($opt['text'], '<a>'));
-		$name = sanitize_title($label);
-		return [
-			'label'    => $label,
-			'id'       => $name,
-			'name'     => $name,
-			'required' => $opt['required']
-		];
-	},  (array)get_field( 'opt_ins', $post['id'] ));
-
-	return $opt_ins;
-}
-
-function get_form_strings( $post, $field_name = null, $request = null ) {
-	return [
-		'submitLabel' => get_field( 'submit', $post['id'] ),
-	];
-}
 
 function add_translation_strings_filepath( $filepaths ) {
 	$filepaths[] = SPCKFORMS_PATH .'/translation-strings.json';
