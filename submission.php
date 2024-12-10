@@ -38,12 +38,19 @@ class Submission {
 
 	private $wpUploadDir;
 	private $uploadDirPath;
+	private $uploadDirURL;
 
 	private $status = 400;
 	private $data   = false;
-	private $errors = false;
+	private $errors = [];
 
 	private $form_id;
+
+	private $secret;
+	private $success_message;
+	private $error_message;
+	private $fieldsConstraints;
+	private $saved_to_db;
 
 	private $params;
 	private $fields;
